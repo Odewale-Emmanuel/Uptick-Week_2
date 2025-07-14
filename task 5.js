@@ -23,3 +23,28 @@ function insertInSortedLinkedList(head, value) {
 
   return head;
 }
+
+function arrayToLinkedList(arr) {
+  if (arr.length === 0) return null;
+  let head = { value: arr[0], next: null };
+  let current = head;
+  for (let i = 1; i < arr.length; i++) {
+    current.next = { value: arr[i], next: null };
+    current = current.next;
+  }
+  return head;
+}
+
+function linkedListToArray(head) {
+  const result = [];
+  let current = head;
+  while (current) {
+    result.push(current.value);
+    current = current.next;
+  }
+  return result;
+}
+
+const head = arrayToLinkedList([1, 2, 4, 5]);
+const newHead = insertInSortedLinkedList(head, 3);
+console.log(linkedListToArray(newHead));
